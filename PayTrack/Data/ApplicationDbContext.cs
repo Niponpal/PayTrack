@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
+using PayTrack.Models;
+
 
 namespace PayTrack.Data
 {

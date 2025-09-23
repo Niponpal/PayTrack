@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Models
+﻿namespace PayTrack.Models
 {
     public class Notification
     {

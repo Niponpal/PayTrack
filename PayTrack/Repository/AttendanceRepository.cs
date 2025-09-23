@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PayTrack.Data;
-using WebApplication1.Models;
+using PayTrack.Models;
 
 namespace PayTrack.Repository
 {

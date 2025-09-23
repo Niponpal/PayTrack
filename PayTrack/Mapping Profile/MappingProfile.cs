@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using WebApplication1.Models;
+using PayTrack.Models;
 
 namespace PayTrack.Mapping_Profile
 {
