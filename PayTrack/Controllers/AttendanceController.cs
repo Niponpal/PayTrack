@@ -52,5 +52,27 @@ namespace PayTrack.Controllers
                 return RedirectToAction("Index");
             }
         }
+        [HttpGet]
+        public async Task<IActionResult> Details(int id, CancellationToken cancellationToken)
+        {
+            var data = await _attendanceRepository.GetAttendanceByIdAsync(id, cancellationToken);
+            if(data != null)
+            {
+                return View(data);
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
+        {
+            var data = await _attendanceRepository.GetDeleteByAsynce(id, cancellationToken);
+            if (data == null)
+            {
+                return NotFound();
+              
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }

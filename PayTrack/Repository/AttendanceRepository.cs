@@ -61,6 +61,9 @@ namespace PayTrack.Repository
             {
                 return null;
             }
+
+            _applicationDbContext.Attendances.Remove(data);
+            await _applicationDbContext.SaveChangesAsync();
             return data;
         }
     }
