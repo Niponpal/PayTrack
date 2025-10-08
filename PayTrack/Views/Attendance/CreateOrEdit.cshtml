@@ -1,0 +1,67 @@
+﻿@model PayTrack.Models.Attendance
+
+@{
+    ViewData["Title"] = "Add Attendance";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">@ViewData["Title"]</h4>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="CreateOrEdit" method="post" class="needs-validation" novalidate>
+                <div class="row g-3">
+
+                    <!-- Date -->
+                    <div class="col-md-6">
+                        <label asp-for="Date" class="form-label fw-semibold">Date</label>
+                        <input asp-for="Date" type="date" class="form-control" required />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+
+                    <!-- In Time -->
+                    <div class="col-md-6">
+                        <label asp-for="InTime" class="form-label fw-semibold">In Time</label>
+                        <input asp-for="InTime" type="time" class="form-control" />
+                        <span asp-validation-for="InTime" class="text-danger"></span>
+                    </div>
+
+                    <!-- Out Time -->
+                    <div class="col-md-6">
+                        <label asp-for="OutTime" class="form-label fw-semibold">Out Time</label>
+                        <input asp-for="OutTime" type="time" class="form-control" />
+                        <span asp-validation-for="OutTime" class="text-danger"></span>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="col-md-6">
+                        <label asp-for="Status" class="form-label fw-semibold">Status</label>
+                        <select asp-for="Status" class="form-select" required>
+                            <option value="">-- Select Status --</option>
+                            <option value="Present">Present</option>
+                            <option value="Absent">Absent</option>
+                            <option value="Leave">Leave</option>
+                        </select>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4">
+                    <a asp-action="Index" class="btn btn-secondary me-2">
+                        <i class="bi bi-arrow-left-circle"></i> Back
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-save"></i> Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

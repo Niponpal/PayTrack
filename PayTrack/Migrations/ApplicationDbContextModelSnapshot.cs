@@ -22,7 +22,7 @@ namespace PayTrack.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("WebApplication1.Models.AppUser", b =>
+            modelBuilder.Entity("PayTrack.Models.AppUser", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace PayTrack.Migrations
                     b.ToTable("appUsers");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Attendance", b =>
+            modelBuilder.Entity("PayTrack.Models.Attendance", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -76,7 +76,7 @@ namespace PayTrack.Migrations
                     b.ToTable("Attendances");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Department", b =>
+            modelBuilder.Entity("PayTrack.Models.Department", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -96,7 +96,7 @@ namespace PayTrack.Migrations
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Designation", b =>
+            modelBuilder.Entity("PayTrack.Models.Designation", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -116,7 +116,7 @@ namespace PayTrack.Migrations
                     b.ToTable("Designations");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Employee", b =>
+            modelBuilder.Entity("PayTrack.Models.Employee", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -153,7 +153,7 @@ namespace PayTrack.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Leave", b =>
+            modelBuilder.Entity("PayTrack.Models.Leave", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -180,7 +180,7 @@ namespace PayTrack.Migrations
                     b.ToTable("Leaves");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Notification", b =>
+            modelBuilder.Entity("PayTrack.Models.Notification", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -204,7 +204,7 @@ namespace PayTrack.Migrations
                     b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Payroll", b =>
+            modelBuilder.Entity("PayTrack.Models.Payroll", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -236,7 +236,7 @@ namespace PayTrack.Migrations
                     b.ToTable("payrolls");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.SalaryComponent", b =>
+            modelBuilder.Entity("PayTrack.Models.SalaryComponent", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
