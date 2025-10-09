@@ -1,0 +1,51 @@
+﻿@model PayTrack.Models.Designation
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
+                    <h4 class="mb-0 fw-semibold">
+                        <i class="bi bi-person-badge me-2"></i> Add / Edit Designation
+                    </h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <form asp-action="CreateOrEdit" method="post">
+                        <!-- Designation Name -->
+                        <div class="mb-3">
+                            <label asp-for="DesignationName" class="form-label fw-semibold">
+                                Designation Name <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="DesignationName" class="form-control form-control-lg" placeholder="Enter designation name" />
+                            <span asp-validation-for="DesignationName" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Level -->
+                        <div class="mb-3">
+                            <label asp-for="Level" class="form-label fw-semibold">Level</label>
+                            <input asp-for="Level" class="form-control form-control-lg" placeholder="Enter level (optional)" />
+                            <span asp-validation-for="Level" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-save me-1"></i> Save Designation
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+                                <i class="bi bi-arrow-left me-1"></i> Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

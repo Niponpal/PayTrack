@@ -1,0 +1,58 @@
+﻿@model PayTrack.Models.Designation
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <!-- Header -->
+                <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
+                    <h4 class="mb-0 fw-semibold">
+                        <i class="bi bi-person-badge me-2"></i> Designation Details
+                    </h4>
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-4">
+                    <dl class="row mb-0">
+                        <!-- ID -->
+                        <dt class="col-sm-4 text-secondary fw-semibold">
+                            <i class="bi bi-hash me-1"></i> ID:
+                        </dt>
+                        <dd class="col-sm-8">@Model.ID</dd>
+
+                        <!-- Designation Name -->
+                        <dt class="col-sm-4 text-secondary fw-semibold mt-3">
+                            <i class="bi bi-person-workspace me-1"></i> Designation Name:
+                        </dt>
+                        <dd class="col-sm-8 mt-3">@Model.DesignationName</dd>
+
+                        <!-- Level -->
+                        <dt class="col-sm-4 text-secondary fw-semibold mt-3">
+                            <i class="bi bi-diagram-3 me-1"></i> Level:
+                        </dt>
+                        <dd class="col-sm-8 mt-3">
+                            @if (!string.IsNullOrWhiteSpace(Model.Level))
+                            {
+                                @Model.Level
+                            }
+                            else
+                            {
+                                <span class="text-muted fst-italic">No level defined.</span>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+
+                <!-- Footer -->
+                <div class="card-footer bg-light text-center py-3 rounded-bottom-4">
+                    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-primary me-2">
+                        <i class="bi bi-pencil-square me-1"></i> Edit
+                    </a>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i> Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
