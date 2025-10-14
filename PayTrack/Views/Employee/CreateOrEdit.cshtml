@@ -1,0 +1,94 @@
+﻿@model PayTrack.Models.Employee
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow border-0 rounded-4">
+
+                <!-- Card Header -->
+                <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
+                    <h4 class="mb-0 fw-bold">
+                        @(Model.ID == 0 ? "Add New Employee" : "Edit Employee")
+                    </h4>
+                </div>
+
+                <!-- Card Body -->
+                <div class="card-body p-4">
+                    <form asp-action="CreateOrEdit" method="post" novalidate>
+                        <input type="hidden" asp-for="ID" />
+
+                        <!-- Form Grid -->
+                        <div class="row g-3">
+                            <!-- First Name -->
+                            <div class="col-md-6">
+                                <label asp-for="FirstName" class="form-label fw-semibold"></label>
+                                <input asp-for="FirstName" class="form-control form-control-lg" placeholder="Enter first name" />
+                                <span asp-validation-for="FirstName" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="col-md-6">
+                                <label asp-for="LastName" class="form-label fw-semibold"></label>
+                                <input asp-for="LastName" class="form-control form-control-lg" placeholder="Enter last name" />
+                                <span asp-validation-for="LastName" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-12">
+                                <label asp-for="Email" class="form-label fw-semibold"></label>
+                                <input asp-for="Email" type="email" class="form-control form-control-lg" placeholder="Enter email" />
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="col-12">
+                                <label asp-for="Phone" class="form-label fw-semibold"></label>
+                                <input asp-for="Phone" class="form-control form-control-lg" placeholder="Enter phone number" />
+                                <span asp-validation-for="Phone" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Joining Date -->
+                            <div class="col-md-6">
+                                <label asp-for="JoiningDate" class="form-label fw-semibold"></label>
+                                <input asp-for="JoiningDate" type="date" class="form-control form-control-lg" />
+                                <span asp-validation-for="JoiningDate" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Salary -->
+                            <div class="col-md-6">
+                                <label asp-for="SalaryBase" class="form-label fw-semibold"></label>
+                                <input asp-for="SalaryBase" type="number" step="0.01" class="form-control form-control-lg" placeholder="0.00" />
+                                <span asp-validation-for="SalaryBase" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="col-12">
+                                <label asp-for="Status" class="form-label fw-semibold"></label>
+                                <select asp-for="Status" class="form-select form-select-lg">
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                                <span asp-validation-for="Status" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-save me-1"></i> Save Employee
+                            </button>
+                            <a asp-action="Index" asp-controller="Employee" class="btn btn-outline-secondary btn-lg">
+                                <i class="bi bi-arrow-left me-1"></i> Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

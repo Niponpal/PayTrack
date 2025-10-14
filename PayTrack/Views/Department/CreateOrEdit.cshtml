@@ -4,12 +4,19 @@
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
             <div class="card shadow-lg border-0 rounded-4">
+                <!-- Card Header -->
                 <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
-                    <h4 class="mb-0 fw-semibold">Add New Department</h4>
+                    <h4 class="mb-0 fw-semibold">
+                        @(Model.ID == 0 ? "Add New Department" : "Edit Department")
+                    </h4>
                 </div>
-                <div class="card-body p-4">
 
+                <!-- Card Body -->
+                <div class="card-body p-4">
                     <form asp-action="CreateOrEdit" method="post">
+                        <!-- Hidden ID for Edit -->
+                        <input type="hidden" asp-for="ID" />
+
                         <!-- Department Name -->
                         <div class="mb-3">
                             <label asp-for="DepartmentName" class="form-label fw-semibold">
@@ -30,15 +37,17 @@
 
                         <!-- Buttons -->
                         <div class="d-grid gap-2 mt-4">
+                            <!-- Save Button -->
                             <button type="submit" class="btn btn-primary btn-lg">
                                 <i class="bi bi-save me-1"></i> Save Department
                             </button>
-                            <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+
+                            <!-- Back Button -->
+                            <a asp-action="Index" asp-controller="Department" class="btn btn-outline-secondary btn-lg">
                                 <i class="bi bi-arrow-left me-1"></i> Back to List
                             </a>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -46,7 +55,5 @@
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    <partial name="_ValidationScriptsPartial" />
 }

@@ -1,0 +1,75 @@
+﻿@model PayTrack.Models.Employee
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow border-0 rounded-4">
+
+                <!-- Card Header -->
+                <div class="card-header bg-info text-white text-center py-3 rounded-top-4">
+                    <h4 class="mb-0 fw-bold">Employee Details</h4>
+                </div>
+
+                <!-- Card Body -->
+                <div class="card-body p-4">
+                    <div class="mb-3 row">
+                        <label class="col-sm-4 col-form-label fw-semibold">First Name:</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-plaintext">@Model.FirstName</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-sm-4 col-form-label fw-semibold">Last Name:</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-plaintext">@Model.LastName</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-sm-4 col-form-label fw-semibold">Email:</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-plaintext">@Model.Email</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-sm-4 col-form-label fw-semibold">Phone:</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-plaintext">@Model.Phone</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-sm-4 col-form-label fw-semibold">Joining Date:</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-plaintext">@Model.JoiningDate.ToString("yyyy-MM-dd")</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-sm-4 col-form-label fw-semibold">Salary:</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-plaintext">@Model.SalaryBase.ToString("C")</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-sm-4 col-form-label fw-semibold">Status:</label>
+                        <div class="col-sm-8">
+                            <span class="badge @(Model.Status == "Active" ? "bg-success" : "bg-danger")">
+                                @Model.Status
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <a asp-action="Index" asp-controller="Employee" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-arrow-left me-1"></i> Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
