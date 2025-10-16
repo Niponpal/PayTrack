@@ -13,6 +13,7 @@ builder.Services.AddScoped<IAttendanceRepository, AttendanceRepository>();
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IDesignationRepository, DesignationRepository>();
 builder.Services.AddScoped<IEmployeeRepostory, EmployeeRepostory>();
+builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

@@ -1,0 +1,62 @@
+﻿@model PayTrack.Models.Leave
+
+
+@{
+    ViewData["Titile"] = "Leave Details";
+}
+
+<div class="container mt-4">
+    <div class="card shadow border-0 rounded-3">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Leave Details</h3>
+        </div>
+
+        <div class="card-body">
+           <table class="table table-bordered align-middle">
+               <tbody>
+                   <tr>
+                       <th style="width:30%">Leave ID</th>
+                        <td>@Model.ID</td>
+                   </tr>
+                    <tr>
+                        <th>Start Date</th>
+                        <td>@Model.StartDate.ToString("dd MMM yyyy")</td>
+                    </tr>
+                    <tr>
+                        <th>End Date</th>
+                        <td>@Model.EndDate.ToString("dd MMM yyyy")</td>
+                    </tr>
+                    <tr>
+                        <th>Leave Type</th>
+                        <td>@Model.LeaveType</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>
+                            @if (Model.Status == "Approved")
+                            {
+                                <span class="badge bg-success">@Model.Status</span>
+                            }
+                            else if (Model.Status == "Rejected")
+                            {
+                                <span class="badge bg-danger">@Model.Status</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">@Model.Status</span>
+                            }
+                        </td>
+                    </tr>
+               </tbody>
+           </table>
+        </div>
+        <div class="card-footer text-end">
+            <a asp-action="CreateOrEdit" asp-route-id="@Model.ID" class="btn btn-warning me-2">
+                <i class="bi bi-pencil-square"></i> Edit
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>

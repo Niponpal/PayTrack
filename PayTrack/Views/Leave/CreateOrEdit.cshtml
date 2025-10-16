@@ -1,0 +1,53 @@
+﻿@model PayTrack.Models.Leave
+
+@{
+    ViewData["Title"] = Model.ID == 0 ? "Create Leave" : "Edit Leave";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">@ViewData["Title"]</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-action="CreateOrEdit">
+                <div class="mb-3">
+                    <label asp-for="StartDate" class="form-label">Start Date</label>
+                  <input asp-for="StartDate" class="form-control" type="date" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="EndDate" class="form-label"> End Date</label>
+                    <input asp-for="EndDate" class="form-control" type="date" />
+                </div>
+
+                <div class=" mb-3">
+                    <label asp-for="LeaveType" class="form-label"></label>
+                    <select asp-for="LeaveType" class="form-select">
+                     <option value="">--- Select Leave Type ---</option>
+                     <option value="Casual">Casual</option>
+                     <option value="Casual">Casual</option>
+                     <option value="Paid">Paid</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Status" class="form-label"></label>
+                    <select asp-for="Status" class="form-select">
+                       <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Approved</option>
+                  </select>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" asp-action="CreateOrEdit" class="btn btn-success px-4">Update</button>
+                    <button type="submit" class="btn btn-success px-4">Save</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+  
+
+</div>
