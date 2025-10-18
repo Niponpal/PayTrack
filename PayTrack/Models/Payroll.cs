@@ -3,7 +3,7 @@
     public class Payroll
     {
         public int ID { get; set; }
-        public string MonthYear { get; set; } = string.Empty; // Format: YYYY-MM
+        public string MonthYear { get; set; }
         public decimal Basic { get; set; }
         public decimal Allowance { get; set; }
         public decimal Deduction { get; set; }

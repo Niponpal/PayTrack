@@ -1,0 +1,87 @@
+﻿@model PayTrack.Models.Payroll
+
+@{
+    ViewData["Title"] = Model.ID == 0 ? "Create Payroll" : "Edit Payroll";
+}
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white text-center rounded-top-4 py-3">
+            <h3 class="mb-0">@ViewData["Title"]</h3>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-action="CreateOrEdit" method="post" id="payrollForm">
+                <input type="hidden" asp-for="ID" />
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <label asp-for="MonthYear" class="form-label fw-bold">Month & Year</label>
+                        <input asp-for="MonthYear" class="form-control form-control-lg" placeholder="e.g. October 2025" />
+                        <span asp-validation-for="MonthYear" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Basic" class="form-label fw-bold">Basic Salary</label>
+                        <input asp-for="Basic" class="form-control form-control-lg" type="number" step="0.01" id="basic" />
+                        <span asp-validation-for="Basic" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Allowance" class="form-label fw-bold">Allowance</label>
+                        <input asp-for="Allowance" class="form-control form-control-lg" type="number" step="0.01" id="allowance" />
+                        <span asp-validation-for="Allowance" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Deduction" class="form-label fw-bold">Deduction</label>
+                        <input asp-for="Deduction" class="form-control form-control-lg" type="number" step="0.01" id="deduction" />
+                        <span asp-validation-for="Deduction" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="NetPay" class="form-label fw-bold">Net Pay</label>
+                        <input asp-for="NetPay" class="form-control form-control-lg bg-light" id="netpay" readonly />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="GeneratedDate" class="form-label fw-bold">Generated Date</label>
+                        <input asp-for="GeneratedDate" class="form-control form-control-lg" readonly />
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <button type="submit" class="btn btn-success btn-lg px-5 me-3">
+                        <i class="bi bi-save"></i> Save
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary btn-lg px-5">
+                        <i class="bi bi-arrow-left"></i> Back
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Auto calculate Net Pay
+        const basic = document.getElementById('basic');
+        const allowance = document.getElementById('allowance');
+        const deduction = document.getElementById('deduction');
+        const netpay = document.getElementById('netpay');
+
+        function calculateNetPay() {
+            const b = parseFloat(basic.value) || 0;
+            const a = parseFloat(allowance.value) || 0;
+            const d = parseFloat(deduction.value) || 0;
+            netpay.value = (b + a - d).toFixed(2);
+        }
+
+        [basic, allowance, deduction].forEach(input =>
+            input.addEventListener('input', calculateNetPay)
+        );
+    </script>
+}

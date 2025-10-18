@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PayTrack.Models.Payroll>
+
+<div class="container py-5">
+    <h2 class="mb-4 text-center">Payroll List</h2>
+
+    <a asp-action="CreateOrEdit" class="btn btn-success mb-3">
+        <i class="bi bi-plus-circle"></i> Add New Payroll
+    </a>
+
+    <table class="table table-bordered table-striped table-hover align-middle text-center">
+        <thead class="table-primary">
+            <tr>
+                <th>ID</th>
+                <th>Month & Year</th>
+                <th>Basic</th>
+                <th>Allowance</th>
+                <th>Deduction</th>
+                <th>Net Pay</th>
+                <th>Generated Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.MonthYear</td>
+                    <td>@item.Basic.ToString("C")</td>
+                    <td>@item.Allowance.ToString("C")</td>
+                    <td>@item.Deduction.ToString("C")</td>
+                    <td>@item.NetPay.ToString("C")</td>
+                    <td>@item.GeneratedDate.ToString("dd-MMM-yyyy")</td>
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a asp-action="CreateOrEdit" asp-route-id="@item.ID" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil-square"></i> 
+                            </a>
+                            <form asp-action="Delete" asp-route-id="@item.ID" method="post" onsubmit="return confirm('Are you sure you want to delete this payroll?');">
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> 
+                                </button>
+                            </form>
+                            <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-info btn-sm text-white">
+                                <i class="bi bi-eye"></i> 
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,61 @@
+﻿@model PayTrack.Models.Payroll
+
+@{
+    ViewData["Title"] = "Payroll Details";
+}
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white text-center rounded-top-4 py-3">
+            <h3 class="mb-0">Payroll Details</h3>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="fw-bold">ID:</label>
+                    <p class="form-control bg-light">@Model.ID</p>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="fw-bold">Month & Year:</label>
+                    <p class="form-control bg-light">@Model.MonthYear</p>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="fw-bold">Basic Salary:</label>
+                    <p class="form-control bg-light">@Model.Basic.ToString("C")</p>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="fw-bold">Allowance:</label>
+                    <p class="form-control bg-light">@Model.Allowance.ToString("C")</p>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="fw-bold">Deduction:</label>
+                    <p class="form-control bg-light">@Model.Deduction.ToString("C")</p>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="fw-bold">Net Pay:</label>
+                    <p class="form-control bg-light">@Model.NetPay.ToString("C")</p>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="fw-bold">Generated Date:</label>
+                    <p class="form-control bg-light">@Model.GeneratedDate.ToString("dd-MMM-yyyy")</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a asp-action="Index" class="btn btn-secondary btn-lg px-5">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+                <a asp-action="CreateOrEdit" asp-route-id="@Model.ID" class="btn btn-warning btn-lg px-5">
+                    <i class="bi bi-pencil-square"></i> Edit
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
