@@ -3,7 +3,7 @@
     public class SalaryComponent
     {
         public int ID { get; set; }
-        public string ComponentName { get; set; } = string.Empty; // Bonus, Tax, Overtime
+        public string ComponentName { get; set; }
         public decimal Amount { get; set; }
     }
 }
