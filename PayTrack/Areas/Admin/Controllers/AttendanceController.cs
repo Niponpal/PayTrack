@@ -3,10 +3,12 @@ using PayTrack.Models;
 using PayTrack.Repository;
 using System.Threading.Tasks;
 
-namespace PayTrack.Controllers
+namespace PayTrack.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class AttendanceController : Controller
     {
+       
         private readonly IAttendanceRepository _attendanceRepository;
 
         public AttendanceController(IAttendanceRepository attendanceRepository)
