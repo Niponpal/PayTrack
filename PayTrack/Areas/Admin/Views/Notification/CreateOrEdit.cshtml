@@ -1,0 +1,50 @@
+﻿@model PayTrack.Models.Notification
+
+@{
+    ViewData["Title"] = Model.ID == 0 ? "Create Notification" : "Edit Notification";
+}
+
+<div class="container py-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">@ViewData["Title"]</h3>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="CreateOrEdit" method="post">
+                @if (Model.ID != 0)
+                {
+                    <input type="hidden" asp-for="ID" />
+                }
+
+                <div class="mb-3">
+                    <label asp-for="Message" class="form-label fw-bold"></label>
+                    <textarea asp-for="Message" class="form-control" rows="4" placeholder="Enter notification message..."></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Status" class="form-label fw-bold"></label>
+                    <select asp-for="Status" class="form-select">
+                        <option value="Unread" selected="@("Unread" == Model.Status)">Unread</option>
+                        <option value="Read" selected="@("Read" == Model.Status)">Read</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-4 me-2">
+                        <i class="bi bi-save"></i> Save
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary px-4">
+                        <i class="bi bi-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

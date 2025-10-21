@@ -1,0 +1,42 @@
+﻿@model PayTrack.Models.Notification
+
+@{
+    ViewData["Title"] = "Notification Details";
+}
+
+<div class="container py-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">📋 Notification Details</h3>
+        </div>
+
+        <div class="card-body">
+            <dl class="row mb-4">
+                <dt class="col-sm-3 fw-bold text-secondary">ID</dt>
+                <dd class="col-sm-9">@Model.ID</dd>
+
+                <dt class="col-sm-3 fw-bold text-secondary">Message</dt>
+                <dd class="col-sm-9">@Model.Message</dd>
+
+                <dt class="col-sm-3 fw-bold text-secondary">Created At</dt>
+                <dd class="col-sm-9">@Model.CreatedAt.ToString("MMM dd, yyyy - hh:mm tt")</dd>
+
+                <dt class="col-sm-3 fw-bold text-secondary">Status</dt>
+                <dd class="col-sm-9">
+                    <span class="badge @(Model.Status == "Unread" ? "bg-warning text-dark" : "bg-success")">
+                        @Model.Status
+                    </span>
+                </dd>
+            </dl>
+
+            <div class="text-center mt-4">
+                <a asp-action="CreateOrEdit" asp-route-id="@Model.ID" class="btn btn-success px-4 me-2">
+                    <i class="bi bi-pencil-square"></i> Edit
+                </a>
+                <a asp-action="Index" class="btn btn-secondary px-4">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

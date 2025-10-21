@@ -3,8 +3,9 @@ using PayTrack.Models;
 using PayTrack.Repository;
 using System.Threading.Tasks;
 
-namespace PayTrack.Controllers
+namespace PayTrack.Areas.Admin.Views
 {
+    [Area("Admin")]
     public class LeaveController : Controller
     {
         private readonly ILeaveRepository _leaveRepository;

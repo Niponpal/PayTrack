@@ -3,8 +3,9 @@ using PayTrack.Models;
 using PayTrack.Repository;
 using System.Threading.Tasks;
 
-namespace PayTrack.Controllers
+namespace PayTrack.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class NotificationController : Controller
     {
         private INotificationRepository _notificationRepository;

@@ -16,6 +16,7 @@ builder.Services.AddScoped<IEmployeeRepostory, EmployeeRepostory>();
 builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
 builder.Services.AddScoped<IPayrollRepository, PayrollRepository>();
 builder.Services.AddScoped<ISalaryComponentRepository, SalaryComponentRepository>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

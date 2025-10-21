@@ -2,10 +2,12 @@
 using PayTrack.Models;
 using PayTrack.Repository;
 
-namespace PayTrack.Controllers
+namespace PayTrack.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class DepartmentController : Controller
     {
+       
         private readonly IDepartmentRepository _departmentRepository;
         public DepartmentController(IDepartmentRepository departmentRepository)
         {
