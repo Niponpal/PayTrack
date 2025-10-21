@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "About Us | PayTrack";
+}
+
+<!-- ====================== About Page ====================== -->
+<section class="py-5 mt-5" style="background-color: #f8f9fa; ">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <!-- ===== About Image ===== -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="position-relative overflow-hidden rounded shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=800&q=80"
+                         class="img-fluid w-100" alt="About PayTrack">
+                    <div class="position-absolute top-0 start-0 w-100 h-100"
+                         style="background: rgba(0, 123, 255, 0.2);"></div>
+                </div>
+            </div>
+
+            <!-- ===== About Content ===== -->
+            <div class="col-lg-6">
+                <h2 class="fw-bold text-primary mb-4">About PayTrack</h2>
+                <p class="text-muted mb-4 fs-5">
+                    PayTrack is a modern payroll and HR management system designed to make employee management easy, fast, and accurate. 
+                    Our platform helps businesses track attendance, manage salaries, and generate insightful reports effortlessly.
+                </p>
+
+                <p class="text-muted mb-4 fs-5">
+                    With a focus on security, scalability, and ease of use, PayTrack empowers organizations to optimize HR operations while reducing administrative workload.
+                </p>
+
+                <ul class="list-unstyled text-muted mb-4">
+                    <li class="mb-2 fs-5"><i class="bi bi-check-circle-fill text-primary me-2"></i> Efficient Payroll Management</li>
+                    <li class="mb-2 fs-5"><i class="bi bi-check-circle-fill text-primary me-2"></i> Employee Attendance Tracking</li>
+                    <li class="mb-2 fs-5"><i class="bi bi-check-circle-fill text-primary me-2"></i> Secure Data Storage</li>
+                    <li class="mb-2 fs-5"><i class="bi bi-check-circle-fill text-primary me-2"></i> Insightful HR Reports</li>
+                </ul>
+
+                <a asp-action="Contact" asp-controller="Home" class="btn btn-primary btn-lg fw-bold">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>

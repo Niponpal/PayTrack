@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Contact Us | PayTrack";
+}
+
+<div class="container py-5 bg-light">
+    <div class="row justify-content-center align-items-center  mt-5">
+
+        <!-- ===== Contact Form ===== -->
+        <div class=" col-lg-6 mb-4 mb-lg-0">
+            <h2 class="mb-4 fw-bold text-primary">Get in Touch</h2>
+            <p class="text-muted mb-4">
+                Have questions or need support? Fill out the form and our team will respond shortly.
+            </p>
+
+            <form asp-action="SendMessage" method="post" class="bg-white p-4 rounded shadow-sm">
+
+                <div class="mb-3">
+                    <label for="Name" class="form-label fw-semibold">Full Name</label>
+                    <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Email" class="form-label fw-semibold">Email Address</label>
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Subject" class="form-label fw-semibold">Subject</label>
+                    <input type="text" class="form-control" id="Subject" name="Subject" placeholder="Enter the subject" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Message" class="form-label fw-semibold">Message</label>
+                    <textarea class="form-control" id="Message" name="Message" rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+
+                <div class="d-grid mt-3">
+                    <button type="submit" class="btn btn-primary btn-lg fw-bold">Send Message</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ===== Contact Info ===== -->
+        <div class="col-lg-5">
+            <div class="bg-light p-4 rounded shadow-sm h-100">
+
+                <h4 class="fw-bold text-primary mb-4">Contact Information</h4>
+
+                <p class="mb-3">
+                    <i class="bi bi-geo-alt-fill me-2 text-primary"></i>
+                    123 Main Street, Dhaka, Bangladesh
+                </p>
+
+                <p class="mb-3">
+                    <i class="bi bi-envelope-fill me-2 text-primary"></i>
+                    support@paytrack.com
+                </p>
+
+                <p class="mb-3">
+                    <i class="bi bi-telephone-fill me-2 text-primary"></i>
+                    +880 123 456 7890
+                </p>
+
+                <div class="mt-4">
+                    <h5 class="fw-semibold mb-2">Find Us on Map</h5>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.823243710121!2d90.39835321543013!3d23.75090348458876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7a99999:0x1a2b3c4d5e6f7g8h!2sDhaka%2C%20Bangladesh!5e0!3m2!1sen!2sbd!4v1690000000000!5m2!1sen!2sbd"
+                            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

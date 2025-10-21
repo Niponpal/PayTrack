@@ -1,8 +1,137 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "PayTrack | Smart Payroll & HR Management";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- ====================== Hero Section ====================== -->
+<header id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="hero-slide d-flex flex-column justify-content-center align-items-center text-center text-white"
+                 style="background: linear-gradient(to right, rgba(0,123,255,0.6), rgba(102,16,242,0.6)), url('/images/payroll-bg1.jpg') center/cover no-repeat;">
+                <div class="container px-4">
+                    <h1 class="display-4 fw-bold mb-3">Simplify Payroll & HR Management</h1>
+                    <p class="lead mb-4">Manage employees, automate salaries, and track attendance effortlessly.</p>
+                    <a href="#about" class="btn btn-warning btn-lg rounded-pill px-5 shadow">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <div class="hero-slide d-flex flex-column justify-content-center align-items-center text-center text-white"
+                 style="background: linear-gradient(to right, rgba(102,16,242,0.6), rgba(0,123,255,0.6)), url('/images/payroll-bg2.jpg') center/cover no-repeat;">
+                <div class="container px-4">
+                    <h1 class="display-4 fw-bold mb-3">Smart Payroll Processing</h1>
+                    <p class="lead mb-4">Empower your HR team with accuracy, speed, and transparency.</p>
+                    <a href="#features" class="btn btn-outline-light btn-lg rounded-pill px-5 shadow">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</header>
+
+<!-- ====================== About Section ====================== -->
+<section id="about" class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://cdn-icons-png.flaticon.com/512/706/706164.png"
+                     class="img-fluid rounded-4 shadow-sm" alt="About PayTrack">
+            </div>
+            <div class="col-lg-6">
+                <h3 class="fw-bold text-primary mb-3">About PayTrack</h3>
+                <p class="lead text-muted mb-4">
+                    PayTrack is a modern payroll and HR management system designed to make workforce management seamless and efficient.
+                    Automate salary calculations, track attendance, and manage employee data—all in one platform.
+                </p>
+                <ul class="list-unstyled fs-5">
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Automated salary processing</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Attendance and leave tracking</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Real-time employee insights</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====================== Features Section ====================== -->
+<section id="features" class="py-5">
+    <div class="container text-center">
+        <h3 class="fw-bold text-primary mb-5">Why Choose PayTrack?</h3>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 h-100 hover-effect">
+                    <i class="bi bi-speedometer2 text-primary fs-1 mb-3"></i>
+                    <h5 class="fw-bold mb-2">Fast & Reliable</h5>
+                    <p class="text-muted">Get payroll and HR tasks done efficiently using our optimized system.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 h-100 hover-effect">
+                    <i class="bi bi-shield-lock text-success fs-1 mb-3"></i>
+                    <h5 class="fw-bold mb-2">Secure Data</h5>
+                    <p class="text-muted">Your company’s payroll data is encrypted and safely stored on our cloud system.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 h-100 hover-effect">
+                    <i class="bi bi-graph-up-arrow text-warning fs-1 mb-3"></i>
+                    <h5 class="fw-bold mb-2">Insightful Reports</h5>
+                    <p class="text-muted">Generate detailed reports and make data-driven HR decisions effortlessly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====================== Inline CSS ====================== -->
+<style>
+    /* Hero Section */
+    #heroCarousel {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .hero-slide {
+        height: 100vh;
+        padding: 0 15px;
+    }
+
+    /* Button Hover */
+    .btn {
+        transition: all 0.3s ease;
+    }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+    /* Section Spacing */
+    section {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    /* Card Hover Effect */
+    .hover-effect {
+        transition: all 0.3s ease-in-out;
+    }
+
+        .hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+        }
+
+ 
+</style>
