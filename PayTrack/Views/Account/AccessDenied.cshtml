@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Access Denied";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .access-denied-container {
+        max-width: 600px;
+        margin: 6rem auto;
+        background-color: #fff;
+        padding: 3rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .access-denied-icon {
+        font-size: 60px;
+        color: #dc3545;
+        margin-bottom: 1rem;
+    }
+
+    .btn-home {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 6px;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+
+        .btn-home:hover {
+            background-color: #0056b3;
+        }
+
+    .alert-danger {
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+</style>
+
+<div class="access-denied-container">
+    <i class="bi bi-shield-exclamation access-denied-icon"></i>
+    <h2 class="fw-bold text-danger">Access Denied</h2>
+    <p class="text-muted mb-3">Sorry, you don't have permission to access this page.</p>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <a href="/" class="btn-home mt-3 d-inline-block">Go Back to Home</a>
+</div>

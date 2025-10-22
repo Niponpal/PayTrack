@@ -75,6 +75,5 @@ namespace PayTrack.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
-
     }
 }
