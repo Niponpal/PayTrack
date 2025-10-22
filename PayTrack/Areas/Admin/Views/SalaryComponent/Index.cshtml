@@ -1,5 +1,90 @@
 ﻿@model IEnumerable<PayTrack.Models.SalaryComponent>
 
+
+
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="card-title">DataTable with Salary Component</h3>
+        <a asp-action="CreateOrEdit" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Add New Salary Component
+        </a>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Amount</th>
+                    <th>Component Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.Amount.ToString("N")</td>
+                        <td>@item.ComponentName</td>
+                        <td>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a asp-action="CreateOrEdit" asp-route-id="@item.ID" class="btn btn-warning btn-sm">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <form asp-action="Delete" asp-route-id="@item.ID" method="post" onsubmit="return confirm('Are you sure you want to delete this payroll?');">
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-info btn-sm text-white">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Amount</th>
+                    <th>Component Name</th>
+                    <th>Actions</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+@section Scripts {
+    <script>
+        $(function () {
+          // $("#example1").DataTable({
+          //   "responsive": true, "lengthChange": false, "autoWidth": false,
+          //   "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+          // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+          $('#example1').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+          });
+        });
+    </script>
+
+}
+
+
+
+
+@* 
 <div class="container py-5">
     <h2 class="mb-4 text-center">Salary Component </h2>
 
@@ -42,4 +127,4 @@
             }
         </tbody>
     </table>
-</div>
+</div> *@
