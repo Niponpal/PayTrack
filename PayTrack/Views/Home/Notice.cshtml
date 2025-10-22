@@ -1,0 +1,81 @@
+﻿@model IEnumerable<PayTrack.Models.HRNotice>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #e9f1f9, #cfd8e3);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .letter-container {
+        background: #fff;
+        width: 700px;
+        padding: 50px;
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        margin: 40px auto;
+    }
+
+    .corner-design {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-bottom: 100px solid #007bff;
+        border-right: 100px solid transparent;
+        border-bottom-left-radius: 5px;
+    }
+
+    h4 {
+        text-align: center;
+        color: #007bff;
+        font-weight: 700;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+    }
+
+    .highlight {
+        background-color: yellow;
+        font-weight: 600;
+    }
+</style>
+
+@foreach (var notice in Model)
+{
+    <div class="letter-container">
+        <h4>@notice.Title</h4>
+
+        <p><strong>Dear:</strong> <span class="highlight">@notice.TargetGroup</span></p>
+        <p>Good day!</p>
+
+        <p>
+            This letter serves as an official notice regarding <span class="highlight">@notice.Title</span>,
+            issued by <span class="highlight">@notice.IssuedBy</span>.
+            Published on: <span class="highlight">@notice.PublishedDate.ToString("dd MMM yyyy")</span>
+            @if (notice.ExpiryDate.HasValue)
+            {
+                <span> | Expiry Date: <span class="highlight">@notice.ExpiryDate.Value.ToString("dd MMM yyyy")</span></span>
+            }
+        </p>
+
+        <p>
+            Status: <span class="highlight">@notice.Status</span>,
+            Important: <span class="highlight">@(notice.IsImportant ? "Yes" : "No")</span>
+        </p>
+
+        @if (!string.IsNullOrEmpty(notice.AttachmentUrl))
+        {
+            <p>
+                Attachment: <a href="@notice.AttachmentUrl" target="_blank">View</a>
+            </p>
+        }
+
+        <p>Thank you for your cooperation.</p>
+        <br>
+        <p>Regards,</p>
+        <p><span class="highlight">@notice.IssuedBy</span></p>
+
+        <div class="corner-design"></div>
+    </div>
+}

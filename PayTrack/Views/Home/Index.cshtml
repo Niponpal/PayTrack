@@ -94,6 +94,70 @@
     </div>
 </section>
 
+<!-- ====================== Notice Board Section ====================== -->
+<section id="notice" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h3 class="fw-bold text-primary">Notice Board</h3>
+            <p class="text-muted">Stay updated with the latest company announcements and HR notices.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Notice 1 -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 hover-effect p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <i class="bi bi-megaphone-fill text-danger fs-2 mb-3"></i>
+                        <h5 class="fw-bold">Salary Disbursement</h5>
+                        <p class="text-muted mb-2">All employee salaries for October 2025 will be processed by October 30.</p>
+                        <small class="text-secondary d-block mb-3">
+                            <i class="bi bi-calendar-event"></i> Posted: Oct 20, 2025
+                        </small>
+                    </div>
+                    <a href="/Notice/Details/1" class="btn btn-outline-primary rounded-pill mt-auto align-self-start">
+                        <i class="bi bi-eye-fill me-2"></i> Read More
+                    </a>
+                </div>
+            </div>
+
+            <!-- Notice 2 -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 hover-effect p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <i class="bi bi-calendar-check-fill text-success fs-2 mb-3"></i>
+                        <h5 class="fw-bold">Holiday Announcement</h5>
+                        <p class="text-muted mb-2">The office will remain closed on October 25 for National Holiday.</p>
+                        <small class="text-secondary d-block mb-3">
+                            <i class="bi bi-calendar-event"></i> Posted: Oct 18, 2025
+                        </small>
+                    </div>
+                    <a href="/Notice/Details/2" class="btn btn-outline-success rounded-pill mt-auto align-self-start">
+                        <i class="bi bi-eye-fill me-2"></i> Read More
+                    </a>
+                </div>
+            </div>
+
+            <!-- Notice 3 -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 hover-effect p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <i class="bi bi-people-fill text-primary fs-2 mb-3"></i>
+                        <h5 class="fw-bold">New Employee Orientation</h5>
+                        <p class="text-muted mb-2">A new employee onboarding session will be held on October 28 at 10:00 AM.</p>
+                        <small class="text-secondary d-block mb-3">
+                            <i class="bi bi-calendar-event"></i> Posted: Oct 15, 2025
+                        </small>
+                    </div>
+                    <a asp-action="Notice" asp-controller="Home" class="btn btn-outline-primary rounded-pill mt-auto align-self-start">
+                        <i class="bi bi-eye-fill me-2"></i> Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <!-- ====================== Inline CSS ====================== -->
 <style>
     /* Hero Section */
@@ -133,5 +197,39 @@
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
         }
 
- 
+    /* Notice Section */
+    #notice .card {
+        border-radius: 15px;
+        background-color: #fff;
+    }
+
+    #notice h5 {
+        color: #0d6efd;
+    }
+
+
+    #notice .card {
+        border-radius: 15px;
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+    }
+
+        #notice .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+        }
+
+    #notice h5 {
+        color: #0d6efd;
+    }
+
+    #notice .btn {
+        transition: all 0.3s ease;
+    }
+
+        #notice .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
 </style>

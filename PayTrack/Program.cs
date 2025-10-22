@@ -18,12 +18,12 @@ builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
 builder.Services.AddScoped<IPayrollRepository, PayrollRepository>();
 builder.Services.AddScoped<ISalaryComponentRepository, SalaryComponentRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+builder.Services.AddScoped<IHRNoticeRepository, HRNoticeRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
 
-builder.Services.AddDbContext<DbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("blog")));
 builder.Services.AddDbContext<AuthDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("AuthDbConnectionString")));
 

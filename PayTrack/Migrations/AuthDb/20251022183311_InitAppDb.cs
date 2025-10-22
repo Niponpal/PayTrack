@@ -171,7 +171,7 @@ namespace PayTrack.Migrations.AuthDb
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "472ba632-6133-44a1-b158-6c10bd7d850d", 0, "dc900e65-f035-46af-a75c-bd97877a0524", "superadmin@bloggie.com", false, false, null, "SUPERADMIN@BLOGGIE.COM", "SUPERADMIN@BLOGGIE.COM", "AQAAAAIAAYagAAAAEL6cz4aRbBMnDyr//QVYNHOWlQpxNVeWOdeJO/bm7CQrB5s+lan+e5Ehh3VqUZw0CQ==", null, false, "5a64ad34-2eb2-4f2b-a47f-5e721bbfaad0", false, "superadmin@bloggie.com" });
+                values: new object[] { "472ba632-6133-44a1-b158-6c10bd7d850d", 0, "b22c0382-961a-48aa-b547-99872d2195f9", "superadmin@bloggie.com", false, false, null, "SUPERADMIN@BLOGGIE.COM", "SUPERADMIN@BLOGGIE.COM", "AQAAAAIAAYagAAAAEB/w708UBbiBqA3B7QcKkFEdGLorvY9S1YGFuisDwAKtQTroCoqogj1rr38coi7Otw==", null, false, "32a61d7c-c2e0-4a84-b2cf-70a3d6822d77", false, "superadmin@bloggie.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

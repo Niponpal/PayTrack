@@ -1,0 +1,78 @@
+﻿@model PayTrack.Models.HRNotice
+
+@{
+    ViewData["Title"] = "HR Notice Details";
+}
+
+<div class="container py-4">
+    <h2 class="mb-4">HR Notice Details</h2>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <!-- Title and Important Badge -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="card-title mb-0">@Model.Title</h4>
+                @if (Model.IsImportant)
+                {
+                    <span class="badge bg-danger">Important</span>
+                }
+            </div>
+
+            <!-- Issued By & Target Group -->
+            <p class="text-muted mb-2">
+                <strong>Issued By:</strong> @Model.IssuedBy <br />
+                <strong>Target Group:</strong> @Model.TargetGroup
+            </p>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <h6>Description:</h6>
+                <p>@Model.Description</p>
+            </div>
+
+            <!-- Dates -->
+            <div class="mb-3">
+                <h6>Dates:</h6>
+                <p>
+                    <strong>Published:</strong> @Model.PublishedDate.ToString("dd MMM yyyy") <br />
+                    @if (Model.ExpiryDate != null)
+                    {
+                        <strong>Expires:</strong> 
+                        @Model.ExpiryDate?.ToString("dd MMM yyyy")
+                    }
+                </p>
+            </div>
+
+            <!-- Status -->
+            <div class="mb-3">
+                <h6>Status:</h6>
+                <span class="badge @(Model.Status == "Active" ? "bg-success" : "bg-secondary")">
+                    @Model.Status
+                </span>
+            </div>
+
+            <!-- Attachment -->
+            @if (!string.IsNullOrEmpty(Model.AttachmentUrl))
+            {
+                <div class="mb-3">
+                    <a href="@Model.AttachmentUrl" class="btn btn-outline-primary" target="_blank">
+                        View Attachment
+                    </a>
+                </div>
+            }
+
+            <!-- Navigation Buttons -->
+            <div class="mt-4 d-flex gap-2">
+                <a href="@Url.Action("Index")" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+                <a href="@Url.Action("Edit", new { id = Model.ID })" class="btn btn-warning">
+                    <i class="bi bi-pencil-square"></i> Edit
+                </a>
+                <a href="@Url.Action("Delete", new { id = Model.ID })" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

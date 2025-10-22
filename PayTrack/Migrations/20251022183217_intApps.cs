@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PayTrack.Migrations
 {
     /// <inheritdoc />
-    public partial class @int : Migration
+    public partial class intApps : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -91,6 +91,29 @@ namespace PayTrack.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HRNotices",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IssuedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TargetGroup = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PublishedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsImportant = table.Column<bool>(type: "bit", nullable: false),
+                    AttachmentUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsApproved = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HRNotices", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Leaves",
                 columns: table => new
                 {
@@ -171,6 +194,9 @@ namespace PayTrack.Migrations
 
             migrationBuilder.DropTable(
                 name: "Employees");
+
+            migrationBuilder.DropTable(
+                name: "HRNotices");
 
             migrationBuilder.DropTable(
                 name: "Leaves");

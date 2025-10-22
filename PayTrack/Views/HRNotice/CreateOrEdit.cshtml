@@ -1,0 +1,80 @@
+﻿@model PayTrack.Models.HRNotice
+
+@{
+    ViewData["Title"] = Model.ID == 0 ? "Add New HR Notice" : "Edit HR Notice";
+}
+
+<div class="container py-4">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <form asp-action="@((Model.ID == 0) ? "CreateOrEdit" : "CreateOrEdit")" asp-controller="HRNotice" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label for="Title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" placeholder="Enter notice title" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.Title)</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Description</label>
+                    <textarea class="form-control" id="Description" name="Description" rows="4" placeholder="Enter description">@Model.Description</textarea>
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.Description)</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="IssuedBy" class="form-label">Issued By</label>
+                    <input type="text" class="form-control" id="IssuedBy" name="IssuedBy" value="@Model.IssuedBy" placeholder="Issued by" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="TargetGroup" class="form-label">Target Group</label>
+                    <input type="text" class="form-control" id="TargetGroup" name="TargetGroup" value="@Model.TargetGroup" placeholder="Target group (e.g., All Employees)" />
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="PublishedDate" class="form-label">Published Date</label>
+                        <input type="date" class="form-control" id="PublishedDate" name="PublishedDate" value="@Model.PublishedDate.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ExpiryDate" class="form-label">Expiry Date</label>
+                        <input type="date" class="form-control" id="ExpiryDate" name="ExpiryDate" value="@(Model.ExpiryDate?.ToString("yyyy-MM-dd") ?? "")" />
+                    </div>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="IsImportant" name="IsImportant" @(Model.IsImportant ? "checked" : "") />
+                    <label class="form-check-label" for="IsImportant">Mark as Important</label>
+                </div>
+
+                <div class="mb-3">
+                    <label for="AttachmentUrl" class="form-label">Attachment</label>
+                    <input type="text" class="form-control" id="AttachmentUrl" name="AttachmentUrl" />
+                    @if (!string.IsNullOrEmpty(Model.AttachmentUrl))
+                    {
+                        <small class="text-muted">Current: <a href="@Model.AttachmentUrl" target="_blank">View File</a></small>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label for="Status" class="form-label">Status</label>
+                    <select class="form-select" id="Status" name="Status">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> @((Model.ID == 0) ? "Save Notice" : "Update Notice")
+                    </button>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary ms-2">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<PayTrack.Models.HRNotice>
+
+<div class="container py-5">
+    <h2 class="mb-4">HR Notices</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Published</th>
+                    <th>Expiry</th>
+                    <th>Target Group</th>
+                    <th>Status</th>
+                    <th>Important</th>
+                    <th>Approved</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var notice in Model)
+                {
+                    <tr>
+                        <td>@notice.Title</td>
+                        <td>@notice.PublishedDate.ToString("dd MMM yyyy")</td>
+                        <td>
+                            @if (notice.ExpiryDate.HasValue)
+                            {
+                                @notice.ExpiryDate.Value.ToString("dd MMM yyyy")
+                            }
+                            else
+                            {
+                                <span class="text-muted">N/A</span>
+                            }
+                        </td>
+                        <td>@notice.TargetGroup</td>
+                        <td>
+                            <span class="badge @(notice.Status == "Active" ? "bg-success" : "bg-secondary")">
+                                @notice.Status
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge @(notice.IsImportant ? "bg-danger" : "bg-info")">
+                                @(notice.IsImportant ? "Yes" : "No")
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge @(notice.IsApproved ? "bg-success" : "bg-warning")">
+                                @(notice.IsApproved ? "Yes" : "No")
+                            </span>
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@notice.ID" class="btn btn-sm btn-primary me-1">View</a>
+                            <a asp-action="Edit" asp-route-id="@notice.ID" class="btn btn-sm btn-warning me-1">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@notice.ID" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

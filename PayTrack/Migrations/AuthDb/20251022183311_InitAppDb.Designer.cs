@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace PayTrack.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20251022104405_InitAppDb")]
+    [Migration("20251022183311_InitAppDb")]
     partial class InitAppDb
     {
         /// <inheritdoc />
@@ -168,15 +168,15 @@ namespace PayTrack.Migrations.AuthDb
                         {
                             Id = "472ba632-6133-44a1-b158-6c10bd7d850d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dc900e65-f035-46af-a75c-bd97877a0524",
+                            ConcurrencyStamp = "b22c0382-961a-48aa-b547-99872d2195f9",
                             Email = "superadmin@bloggie.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@BLOGGIE.COM",
                             NormalizedUserName = "SUPERADMIN@BLOGGIE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEL6cz4aRbBMnDyr//QVYNHOWlQpxNVeWOdeJO/bm7CQrB5s+lan+e5Ehh3VqUZw0CQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB/w708UBbiBqA3B7QcKkFEdGLorvY9S1YGFuisDwAKtQTroCoqogj1rr38coi7Otw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5a64ad34-2eb2-4f2b-a47f-5e721bbfaad0",
+                            SecurityStamp = "32a61d7c-c2e0-4a84-b2cf-70a3d6822d77",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@bloggie.com"
                         });
