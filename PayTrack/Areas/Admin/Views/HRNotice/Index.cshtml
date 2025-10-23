@@ -1,5 +1,95 @@
 ﻿@model IEnumerable<PayTrack.Models.HRNotice>
 
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="card-title">DataTable with Notice</h3>
+        <a asp-action="CreateOrEdit" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Create New Notice
+        </a>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Published</th>
+                    <th>Expiry</th>
+                    <th>Target Group</th>
+                    <th>Status</th>
+                    <th>Important</th>
+                    <th>Approved</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var notice in Model){
+                <tr>
+                    <td>@notice.Title</td>
+                    <td>@notice.PublishedDate.ToString("dd MMM yyyy")</td>
+                    <td>
+                        @if (notice.ExpiryDate.HasValue)
+                        {
+                            @notice.ExpiryDate.Value.ToString("dd MMM yyyy")
+                        }
+                        else
+                        {
+                            <span class="text-muted">N/A</span>
+                        }
+                    </td>
+                    <td>@notice.TargetGroup</td>
+                    <td>
+                        <span class="badge @(notice.Status == "Active" ? "bg-success" : "bg-secondary")">
+                            @notice.Status
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge @(notice.IsImportant ? "bg-danger" : "bg-info")">
+                            @(notice.IsImportant ? "Yes" : "No")
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge @(notice.IsApproved ? "bg-success" : "bg-warning")">
+                            @(notice.IsApproved ? "Yes" : "No")
+                        </span>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a asp-action="CreateOrEdit" asp-route-id="@notice.ID" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <form asp-action="Delete" asp-route-id="@notice.ID" method="post" onsubmit="return confirm('Are you sure you want to delete this payroll?');">
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                            <a asp-action="Details" asp-route-id="@notice.ID" class="btn btn-info btn-sm text-white">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Title</th>
+                    <th>Published</th>
+                    <th>Expiry</th>
+                    <th>Target Group</th>
+                    <th>Status</th>
+                    <th>Important</th>
+                    <th>Approved</th>
+                    <th>Actions</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+@* 
 <div class="container py-5">
     <h2 class="mb-4">HR Notices</h2>
 
@@ -50,9 +140,19 @@
                             </span>
                         </td>
                         <td>
-                            <a asp-action="Details" asp-route-id="@notice.ID" class="btn btn-sm btn-primary me-1">View</a>
-                            <a asp-action="Edit" asp-route-id="@notice.ID" class="btn btn-sm btn-warning me-1">Edit</a>
-                            <a asp-action="Delete" asp-route-id="@notice.ID" class="btn btn-sm btn-danger">Delete</a>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a asp-action="CreateOrEdit" asp-route-id="@notice.ID" class="btn btn-warning btn-sm">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <form asp-action="Delete" asp-route-id="@notice.ID" method="post" onsubmit="return confirm('Are you sure you want to delete this payroll?');">
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                                <a asp-action="Details" asp-route-id="@notice.ID" class="btn btn-info btn-sm text-white">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 }
@@ -60,3 +160,28 @@
         </table>
     </div>
 </div>
+ *@
+
+
+
+
+@section Scripts {
+    <script>
+        $(function () {
+          // $("#example1").DataTable({
+          //   "responsive": true, "lengthChange": false, "autoWidth": false,
+          //   "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+          // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+          $('#example1').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+          });
+        });
+    </script>
+
+}

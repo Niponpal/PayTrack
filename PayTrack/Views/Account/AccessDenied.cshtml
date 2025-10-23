@@ -3,18 +3,22 @@
 }
 
 <style>
-    body {
+    .page-wrapper {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: #f8f9fa;
         font-family: 'Poppins', sans-serif;
     }
 
     .access-denied-container {
         max-width: 600px;
-        margin: 6rem auto;
+        width: 100%;
         background-color: #fff;
         padding: 3rem;
         border-radius: 0.75rem;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         text-align: center;
     }
 
@@ -30,11 +34,12 @@
         border-radius: 6px;
         padding: 10px 20px;
         text-decoration: none;
+        display: inline-block;
     }
 
         .btn-home:hover {
             background-color: #0056b3;
-            color:red;
+            color: red;
         }
 
     .alert-danger {
@@ -43,17 +48,19 @@
     }
 </style>
 
-<div class="access-denied-container">
-    <i class="bi bi-shield-exclamation access-denied-icon"></i>
-    <h2 class="fw-bold text-danger">Access Denied</h2>
-    <p class="text-muted mb-3">Sorry, you don't have permission to access this page.</p>
+<div class="page-wrapper">
+    <div class="access-denied-container">
+        <i class="bi bi-shield-exclamation access-denied-icon"></i>
+        <h2 class="fw-bold text-danger">Access Denied</h2>
+        <p class="text-muted mb-3">Sorry, you don't have permission to access this page.</p>
 
-    @if (TempData["ErrorMessage"] != null)
-    {
-        <div class="alert alert-danger" role="alert">
-            @TempData["ErrorMessage"]
-        </div>
-    }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["ErrorMessage"]
+            </div>
+        }
 
-    <a href="/" class="btn-home mt-3 d-inline-block">Go Back to Home</a>
+        <a href="/" class="btn-home mt-3">Go Back to Home</a>
+    </div>
 </div>
