@@ -1,0 +1,77 @@
+﻿@model IEnumerable<PayTrack.Models.Employee>
+@{
+    ViewData["Title"] = "Employee List";
+    Layout = "_Layout"; // Ensure header/footer included
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #e9f1f9, #cfd8e3);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .EmployeeList {
+        margin-top: 100px; /* Adjusted top margin */
+     
+    }
+
+    .letter-container {
+        background: #fff;
+        width: 700px;
+        max-width: 100%; /* Responsive */
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        position: relative;
+        margin: 30px auto;
+        transition: transform 0.3s;
+    }
+
+        .letter-container:hover {
+            transform: translateY(-5px);
+        }
+
+    .corner-design {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-bottom: 50px solid #007bff;
+        border-right: 50px solid transparent;
+        border-bottom-left-radius: 10px;
+    }
+
+    h4 {
+        text-align: center;
+        color: #007bff;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    .highlight {
+        background-color: yellow;
+        font-weight: 600;
+    }
+
+ 
+</style>
+
+<div class="container EmployeeList">
+    <h4>Employee List</h4>
+
+    @foreach (var emp in Model)
+    {
+        <div class="letter-container mb-4">
+            <div class="corner-design"></div>
+            <p><strong>Name:</strong> <span class="highlight">@emp.FirstName @emp.LastName</span></p>
+            <p><strong>Designation:</strong> @emp.Designation?.DesignationName</p>
+            <p><strong>Email:</strong> @emp.Email</p>
+            <p><strong>Phone:</strong> @emp.Phone</p>
+            <p><strong>Joining Date:</strong> @emp.JoiningDate.ToShortDateString()</p>
+            <p><strong>Salary:</strong> @emp.SalaryBase.ToString("C")</p>
+            <p><strong>Status:</strong> @emp.Status</p>
+        </div>
+    }
+</div>

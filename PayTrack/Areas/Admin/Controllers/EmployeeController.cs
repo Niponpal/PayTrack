@@ -9,10 +9,14 @@ namespace PayTrack.Areas.Admin.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployeeRepostory _employeeRepostory;
-        public EmployeeController(IEmployeeRepostory employeeRepostory)
+        private readonly IDesignationRepository _designationRepository;
+      
+        public EmployeeController(IEmployeeRepostory employeeRepostory, IDesignationRepository designationRepository)
         {
             _employeeRepostory = employeeRepostory;
+            _designationRepository = designationRepository;
         }
+
         public async Task<IActionResult> Index( CancellationToken cancellationToken)
         {
             var employess = await _employeeRepostory.GetAllEmployeeAsynce(cancellationToken);
@@ -23,6 +27,7 @@ namespace PayTrack.Areas.Admin.Controllers
         {
             if (id == 0)
             {
+                ViewData["DesignationID"] = _designationRepository.Dropdown();
                 return View(new Employee());
             }
             else
@@ -32,6 +37,7 @@ namespace PayTrack.Areas.Admin.Controllers
                 {
                     return NotFound();
                 }
+                ViewData["DesignationID"] = _designationRepository.Dropdown();
                 return View(employee);
             }
         }
@@ -40,12 +46,14 @@ namespace PayTrack.Areas.Admin.Controllers
         {
             if (employee.ID == 0)
             {
-                var employeeData = await _employeeRepostory.AddEmployeeAsync(employee, cancellationToken);
+                ViewData["DesignationID"] = _designationRepository.Dropdown();
+                await _employeeRepostory.AddEmployeeAsync(employee, cancellationToken);
                 return RedirectToAction(nameof(Index));
 
             }
             else
             {
+                ViewData["DesignationID"] = _designationRepository.Dropdown();
                 var employeeData = await _employeeRepostory.UpdateEmployeeAsync(employee, cancellationToken);
                 return RedirectToAction(nameof(Index));
             }

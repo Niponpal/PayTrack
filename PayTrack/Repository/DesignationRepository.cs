@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using PayTrack.Data;
 using PayTrack.Models;
 
@@ -28,6 +29,16 @@ namespace PayTrack.Repository
                 return data;
             }
             return null!;
+        }
+
+        public IEnumerable<SelectListItem> Dropdown()
+        {
+            var data = _context.Designations.Select(x => new SelectListItem
+            {
+                Text = x.DesignationName,
+                Value = x.ID.ToString()
+            }).ToList();
+            return data;
         }
 
         public async Task<IEnumerable<Designation>> GetAllDesignationsAsync(CancellationToken cancellationToken)

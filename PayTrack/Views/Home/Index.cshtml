@@ -109,7 +109,9 @@
                     <div>
                         <i class="bi bi-megaphone-fill text-danger fs-2 mb-3"></i>
                         <h5 class="fw-bold">Salary Disbursement</h5>
-                        <p class="text-muted mb-2">All employee salaries for October 2025 will be processed by October 30.</p>
+                        <p class="text-muted mb-2">
+                            All employee salaries for October 2025 will be processed by October 30.
+                        </p>
                         <small class="text-secondary d-block mb-3">
                             <i class="bi bi-calendar-event"></i> Posted: Oct 20, 2025
                         </small>
@@ -120,20 +122,24 @@
                 </div>
             </div>
 
+
+
+
             <!-- Notice 2 -->
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm h-100 hover-effect p-4 d-flex flex-column justify-content-between">
                     <div>
                         <i class="bi bi-calendar-check-fill text-success fs-2 mb-3"></i>
-                        <h5 class="fw-bold">Holiday Announcement</h5>
+                        <h5 class="fw-bold">Employe List</h5>
                         <p class="text-muted mb-2">The office will remain closed on October 25 for National Holiday.</p>
                         <small class="text-secondary d-block mb-3">
                             <i class="bi bi-calendar-event"></i> Posted: Oct 18, 2025
                         </small>
                     </div>
-                    <a href="/Notice/Details/2" class="btn btn-outline-success rounded-pill mt-auto align-self-start">
+                    <a asp-action="EmployeList" asp-controller="Home" class="btn btn-outline-success rounded-pill mt-auto align-self-start">
                         <i class="bi bi-eye-fill me-2"></i> Read More
                     </a>
+
                 </div>
             </div>
 

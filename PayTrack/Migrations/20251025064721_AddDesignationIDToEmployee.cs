@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PayTrack.Migrations
 {
     /// <inheritdoc />
-    public partial class intApps : Migration
+    public partial class AddDesignationIDToEmployee : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -69,25 +69,6 @@ namespace PayTrack.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Designations", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Employees",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    JoiningDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    SalaryBase = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employees", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,6 +156,37 @@ namespace PayTrack.Migrations
                 {
                     table.PrimaryKey("PK_salaryComponents", x => x.ID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    JoiningDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SalaryBase = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DesignationID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Employees_Designations_DesignationID",
+                        column: x => x.DesignationID,
+                        principalTable: "Designations",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Employees_DesignationID",
+                table: "Employees",
+                column: "DesignationID");
         }
 
         /// <inheritdoc />
@@ -188,9 +200,6 @@ namespace PayTrack.Migrations
 
             migrationBuilder.DropTable(
                 name: "Departments");
-
-            migrationBuilder.DropTable(
-                name: "Designations");
 
             migrationBuilder.DropTable(
                 name: "Employees");
@@ -209,6 +218,9 @@ namespace PayTrack.Migrations
 
             migrationBuilder.DropTable(
                 name: "salaryComponents");
+
+            migrationBuilder.DropTable(
+                name: "Designations");
         }
     }
 }

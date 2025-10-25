@@ -124,6 +124,9 @@ namespace PayTrack.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int>("DesignationID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -149,6 +152,8 @@ namespace PayTrack.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("DesignationID");
 
                     b.ToTable("Employees");
                 });
@@ -305,6 +310,22 @@ namespace PayTrack.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("salaryComponents");
+                });
+
+            modelBuilder.Entity("PayTrack.Models.Employee", b =>
+                {
+                    b.HasOne("PayTrack.Models.Designation", "Designation")
+                        .WithMany("Employees")
+                        .HasForeignKey("DesignationID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Designation");
+                });
+
+            modelBuilder.Entity("PayTrack.Models.Designation", b =>
+                {
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,14 +11,17 @@ namespace PayTrack.Repository
         {
             _context = context;
         }
-        async Task<Employee> IEmployeeRepostory.AddEmployeeAsync(Employee employee, CancellationToken cancellationToken)
+
+        // Add Employee
+        public async Task<Employee> AddEmployeeAsync(Employee employee, CancellationToken cancellationToken)
         {
             await _context.Employees.AddAsync(employee, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
             return employee;
         }
 
-        async Task<Employee> IEmployeeRepostory.DeleteEmployeeAsync(int id, CancellationToken cancellationToken)
+        // Delete Employee
+        public async Task<Employee?> DeleteEmployeeAsync(int id, CancellationToken cancellationToken)
         {
             var data = await _context.Employees.FindAsync(id);
             if (data != null)
@@ -30,29 +33,28 @@ namespace PayTrack.Repository
             return null;
         }
 
-        async Task<IEnumerable<Employee>> IEmployeeRepostory.GetAllEmployeeAsynce(CancellationToken cancellationToken)
+   
+
+        // Get All Employees + Include Designation
+        public async Task<IEnumerable<Employee>> GetAllEmployeeAsynce(CancellationToken cancellationToken)
         {
-            var data = await _context.Employees.ToListAsync(cancellationToken);
-            if (data != null)
-            {
-                return data;
-            }
-            return null;
+            return await _context.Employees
+                .Include(e => e.Designation)
+                .ToListAsync(cancellationToken);
         }
 
-        async Task<Employee> IEmployeeRepostory.GetEmployeeByIdAsync(int id, CancellationToken cancellationToken)
+        // Get Employee By ID + Include Designation
+        public async Task<Employee?> GetEmployeeByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var data = await _context.Employees.FindAsync(id);
-            if (data != null)
-            {
-                return data;
-            }
-            return null;
+            return await _context.Employees
+                .Include(e => e.Designation)
+                .FirstOrDefaultAsync(e => e.ID == id, cancellationToken);
         }
 
-        async Task<Employee> IEmployeeRepostory.UpdateEmployeeAsync(Employee employee, CancellationToken cancellationToken)
+        // Update Employee
+        public async Task<Employee?> UpdateEmployeeAsync(Employee employee, CancellationToken cancellationToken)
         {
-           var data = await _context.Employees.FindAsync(employee.ID);
+            var data = await _context.Employees.FindAsync(employee.ID);
             if (data != null)
             {
                 data.FirstName = employee.FirstName;
@@ -62,6 +64,7 @@ namespace PayTrack.Repository
                 data.JoiningDate = employee.JoiningDate;
                 data.SalaryBase = employee.SalaryBase;
                 data.Status = employee.Status;
+                data.DesignationID = employee.DesignationID; // Update FK
                 _context.Employees.Update(data);
                 await _context.SaveChangesAsync(cancellationToken);
                 return data;

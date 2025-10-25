@@ -10,5 +10,10 @@
         public DateTime JoiningDate { get; set; }
         public decimal SalaryBase { get; set; }
         public string Status { get; set; } = "Active";
+
+        // Foreign Key
+        public int DesignationID { get; set; }
+        public Designation? Designation { get; set; }
+
     }
 }

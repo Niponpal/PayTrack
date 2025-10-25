@@ -11,6 +11,16 @@ namespace PayTrack.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Employee ↔ Designation (Many-to-One)
+            modelBuilder.Entity<Employee>()
+                .HasOne(e => e.Designation)
+                .WithMany(d => d.Employees)
+                .HasForeignKey(e => e.DesignationID)
+                .OnDelete(DeleteBehavior.Restrict); // Optional: prevent cascade delete
+        }
+
         public DbSet<AppUser> appUsers { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Department> Departments { get; set; }

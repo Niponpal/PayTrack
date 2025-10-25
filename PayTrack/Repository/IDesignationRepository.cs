@@ -1,4 +1,5 @@
-﻿using PayTrack.Models;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using PayTrack.Models;
 
 namespace PayTrack.Repository
 {
@@ -9,5 +10,7 @@ namespace PayTrack.Repository
         Task<Designation> AddDesignationAsync(Designation designation, CancellationToken cancellationToken);
         Task<Designation> UpdateDesignationAsync(Designation designation, CancellationToken cancellationToken);
         Task<Designation> DeleteDesignationAsync(int id, CancellationToken cancellationToken);
+
+        IEnumerable<SelectListItem> Dropdown();
     }
 }
