@@ -22,8 +22,7 @@ namespace PayTrack.Mapping_Profile
             // SalaryComponent mapping
             CreateMap<SalaryComponent, SalaryComponent>().ReverseMap();
 
-            // Users mapping
-            CreateMap<AppUser, AppUser>().ReverseMap();
+         
 
             // Notification mapping
             CreateMap<Notification, Notification>().ReverseMap();

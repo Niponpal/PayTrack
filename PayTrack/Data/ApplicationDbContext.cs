@@ -21,7 +21,7 @@ namespace PayTrack.Data
                 .OnDelete(DeleteBehavior.Restrict); // Optional: prevent cascade delete
         }
 
-        public DbSet<AppUser> appUsers { get; set; }
+        
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
